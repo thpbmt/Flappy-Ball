@@ -288,3 +288,12 @@ startButton.addEventListener("click", startGame);
 goToWelcomeButton.addEventListener("click", () => {
   window.location.href = "index.html"; // chuyển về trang welcome
 });
+
+gameContainer.addEventListener("click", () => {
+  if (!isGameOver) velocity = -8;
+});
+
+gameContainer.addEventListener("touchstart", () => {
+  if (!isGameOver) velocity = -8;
+});
+
