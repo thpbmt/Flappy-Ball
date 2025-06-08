@@ -11,9 +11,9 @@ const backToMenuButton = document.getElementById("back-to-home-button"); // nút
 const goToWelcomeButton = document.getElementById("go-to-welcome-button");
 // Âm thanh
 const bgMusic = new Audio("sounds/Background_Sound.mp3");
-const jumpSound = new Audio("sounds/Jump_Sound.mp3");
+const jumpSound = new Audio("sounds/Jump_Sound.m4a");
 const scoreSound = new Audio("sounds/Point_Sound.mp3");
-const gameOverSound = new Audio("sounds/uhhh_Sound.mp3");
+const gameOverSound = new Audio("sounds/uhhh_Sound.m4a");
 
 bgMusic.loop = true;
 bgMusic.volume = 0.5; // Điều chỉnh âm lượng nếu cần
