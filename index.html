@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Flappy Game</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(to bottom, #2193b0, #6dd5ed);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .logo-container {
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .logo-container img {
+      width: 200px;
+      animation: bounce 2s infinite;
+    }
+
+    .logo-container h1 {
+      font-size: 36px;
+      color: white;
+      margin-top: 20px;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .click-message {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #fff;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    .floating {
+      position: absolute;
+      pointer-events: none;
+      /* để không bị cản click */
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    .bird1 {
+      width: 80px;
+      top: 20%;
+      left: -100px;
+      animation: flyRight 12s linear infinite;
+    }
+
+    .cloud1 {
+      width: 150px;
+      top: 40%;
+      left: -200px;
+      animation: flyRight 30s linear infinite;
+    }
+
+    .ball1 {
+      width: 60px;
+      top: 60%;
+      left: -120px;
+      animation: flyRight 20s linear infinite;
+    }
+
+    @keyframes flyRight {
+      0% {
+        left: -200px;
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+
+      100% {
+        left: 110%;
+        transform: translateY(0);
+      }
+    }
+    .how-to-play-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #3498db;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+  z-index: 999;
+}
+
+.how-to-play-btn:hover {
+  background-color: #2980b9;
+}
+  </style>
+</head>
+
+<body onclick="window.location.href='game.html'">
+  <div class="logo-container">
+    <img src="Images/logo Flappy Ball.png" alt="Game Logo"
+      onclick="event.stopPropagation(); window.location.href='about.html';">
+    <h1>Welcome to Flappy Ball</h1>
+    <div class="click-message">Click anywhere to start</div>
+  </div>
+  <img src="Images/FlappyBir.png" class="floating bird1">
+  <img src="Images/JetpackJoyride2_GIF.gif" class="floating cloud1">
+  <img src="Images/Mario_GIF.gif" class="floating ball1">
+<a href="how-to-play.html" class="how-to-play-btn">📘 Hướng dẫn chơi</a>
+
+
+</body>
+
+</html>

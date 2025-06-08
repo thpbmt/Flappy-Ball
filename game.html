@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flappy Bird</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Màn hình bắt đầu -->
+  <div id="start-screen">
+    <h1>Flappy Ball</h1>
+    <input type="text" id="player-name" placeholder="Nhập tên của bạn" />
+    <br><br>
+    <label for="difficulty">Chọn độ khó:</label>
+    <select id="difficulty">
+      <option value="easy">Easy</option>
+      <option value="normal" selected>Normal</option>
+      <option value="hard">Hard</option>
+      <option value="nightmare">Nightmare</option>
+      <option value="impossible">God</option>
+    </select>
+    <br><br>
+    <br><br>
+    <label for="skin-select">Chọn skin:</label>
+    <select id="skin-select">
+      <option value="1">Bóng đá</option>
+      <option value="2">Bóng chuyền</option>
+      <option value="3">Tennis</option>
+      <option value="4">Kickball</option>
+      <option value="5">Bóng rổ</option>
+      <option value="6">Bi-a</option>
+      <option value="7">Bóng chày</option>
+    </select>
+
+    <button id="start-button">Bắt đầu chơi</button>
+<br><br>
+<button id="go-to-welcome-button">🏠 Về màn hình Welcome</button>
+  </div>
+
+  <!-- Game -->
+  <div id="game-container" style="display: none;">
+    <div id="bird"></div>
+    <div class="pipe pipe-top"></div>
+    <div class="pipe pipe-bottom"></div>
+    <div id="score">Score: 0</div>
+    <button id="restart-button" style="display: none;">Restart</button>
+    <!-- Overlay chứa bảng xếp hạng -->
+    <div id="leaderboard" class="leaderboard-overlay" style="display: none;">
+      <div class="leaderboard-content">
+        <h2>Bảng xếp hạng</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tên</th>
+              <th>Điểm</th>
+              <th>Độ khó</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body"></tbody>
+        </table>
+        <div class="leaderboard-buttons">
+          <button id="play-again-button">🔁 Chơi lại</button>
+          <button id="back-to-home-button">🏠 Về màn hình chính</button>
+          <button id="clear-leaderboard">🗑️ Xóa bảng xếp hạng</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

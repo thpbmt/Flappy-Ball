@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hướng Dẫn Chơi</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Hiệu ứng background hình tròn nhẹ */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+      top: -200px;
+      left: -200px;
+      z-index: 0;
+      animation: float 10s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(30px, 20px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .slide-container {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+      border-radius: 20px;
+      padding: 30px 40px;
+      width: 90%;
+      max-width: 700px;
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .slide p {
+      font-size: 20px;
+      line-height: 1.6;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .nav-buttons {
+      margin-top: 25px;
+    }
+
+    .nav-buttons button {
+      padding: 12px 25px;
+      margin: 0 10px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons button:hover {
+      background: #217dbb;
+    }
+
+    .back-home {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      text-decoration: none;
+      background: #2ecc71;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-home">⬅ Trang chính</a>
+
+  <div class="slide-container">
+    <div class="slide" id="slide">
+      <!-- Nội dung slide sẽ được render ở đây -->
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevSlide()">⏮ Quay lại</button>
+      <button onclick="nextSlide()">⏭ Tiếp</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = [
+      {
+        image: "Images/Slide1.jpg",
+        text: "🎮 <strong>Điều khiển:</strong> Nhấn phím Cách (Space) để chim bay lên. Tránh va vào ống hoặc chướng ngại vật."
+      },
+      {
+        image: "Images/Slide 2.jpg",
+        text: "🏆 <strong>Điểm số:</strong> Vượt qua mỗi cặp ống bạn sẽ được +1 điểm. Càng đi xa điểm càng cao!"
+      },
+      {
+        image: "Images/Slide 3.jpg",
+        text: "🔄 <strong>Chơi lại:</strong> Khi kết thúc game, nhấn nút Restart để chơi lại hoặc quay về trang chính."
+      }
+    ];
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      const slide = slides[index];
+      document.getElementById("slide").innerHTML = `
+        <img src="${slide.image}" alt="Slide hướng dẫn">
+        <p>${slide.text}</p>
+      `;
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    showSlide(currentSlide);
+  </script>
+
+</body>
+</html>
