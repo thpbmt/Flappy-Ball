@@ -9,6 +9,15 @@ const startButton = document.getElementById("start-button");
 const restartButton = document.getElementById("play-again-button"); // nút "Chơi lại"
 const backToMenuButton = document.getElementById("back-to-home-button"); // nút "Về màn hình chính"
 const goToWelcomeButton = document.getElementById("go-to-welcome-button");
+// Âm thanh
+const bgMusic = new Audio("sounds/Background_Sound.mp3");
+const jumpSound = new Audio("sounds/Jump_Sound.mp3");
+const scoreSound = new Audio("sounds/Point_Sound.mp3");
+const gameOverSound = new Audio("sounds/uhhh_Sound.mp3");
+
+bgMusic.loop = true;
+bgMusic.volume = 0.5; // Điều chỉnh âm lượng nếu cần
+
 
 
 
@@ -76,6 +85,8 @@ function resetGame() {
   if (currentDifficulty === "nightmare") {
     bulletIntervalId = setInterval(spawnBullet, 1500); // mỗi 1.5s sinh viên đạn
   }
+  bgMusic.currentTime = 0;
+  bgMusic.play();
   setTimeout(() => {
     gameLoopId = requestAnimationFrame(gameLoop); // Gán ID mới
   }, 300);
@@ -126,7 +137,8 @@ function startGame() {
       pipeGap = 50;
       break;
   }
-
+  bgMusic.currentTime = 0;
+  bgMusic.play();
   startScreen.style.display = "none";
   gameContainer.style.display = "block";
   document.getElementById("leaderboard").style.display = "none";
@@ -189,6 +201,9 @@ function gameLoop() {
 
     score++;
     scoreDisplay.textContent = `${playerName} - Score: ${score}`;
+    scoreSound.currentTime = 0;
+    scoreSound.play();
+
   }
 
   const birdRect = bird.getBoundingClientRect();
@@ -206,6 +221,8 @@ function gameLoop() {
   ) {
     isGameOver = true;
     clearInterval(bulletIntervalId);
+    bgMusic.pause();
+    gameOverSound.play();
 
     leaderboard.push({
       name: playerName,
@@ -268,13 +285,6 @@ function gameLoop() {
 
 
 
-document.addEventListener("keydown", (e) => {
-  if (e.code === "Space" && !isGameOver) {
-    velocity = -8;
-
-  }
-});
-
 startButton.addEventListener("click", startGame);
 restartButton.addEventListener("click", resetGame);
 backToMenuButton.addEventListener("click", () => {
@@ -289,11 +299,28 @@ goToWelcomeButton.addEventListener("click", () => {
   window.location.href = "index.html"; // chuyển về trang welcome
 });
 
+document.addEventListener("keydown", (e) => {
+  if (e.code === "Space" && !isGameOver) {
+    velocity = -8;
+    jumpSound.currentTime = 0;
+    jumpSound.play();
+  }
+});
+
 gameContainer.addEventListener("click", () => {
-  if (!isGameOver) velocity = -8;
+  if (!isGameOver) {
+    velocity = -8;
+    jumpSound.currentTime = 0;
+    jumpSound.play();
+  }
 });
 
 gameContainer.addEventListener("touchstart", () => {
-  if (!isGameOver) velocity = -8;
+  if (!isGameOver) {
+    velocity = -8;
+    jumpSound.currentTime = 0;
+    jumpSound.play();
+  }
 });
+
 
