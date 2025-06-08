@@ -61,7 +61,7 @@ function resetGame() {
   pipeBottom.style.left = pipeX + "px";
   pipeTop.style.height = topHeight + "px";
   pipeBottom.style.height = 600 - topHeight - pipeGap + "px";
-  bird.style.backgroundImage = `url("images/skin${selectedSkin}.png")`;
+  bird.style.backgroundImage = `url("Images/skin${selectedSkin}.png")`;
   bird.style.backgroundSize = "cover";
   bird.style.borderRadius = "50%"; // Làm tròn ảnh
 
