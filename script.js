@@ -55,7 +55,7 @@ clearLeaderboardButton.addEventListener("click", () => {
 function resetGame() {
   cancelAnimationFrame(gameLoopId); // Hủy vòng lặp cũ nếu còn
 
-  birdY = 200;
+  birdY = 175;
   velocity = 0;
   pipeX = 400;
   topHeight = 200;
@@ -302,6 +302,7 @@ goToWelcomeButton.addEventListener("click", () => {
 document.addEventListener("keydown", (e) => {
   if (e.code === "Space" && !isGameOver) {
     velocity = -8;
+     createSmoke();
     jumpSound.currentTime = 0;
     jumpSound.play();
   }
@@ -310,6 +311,7 @@ document.addEventListener("keydown", (e) => {
 gameContainer.addEventListener("click", () => {
   if (!isGameOver) {
     velocity = -8;
+    createSmoke();
     jumpSound.currentTime = 0;
     jumpSound.play();
   }
@@ -322,5 +324,19 @@ gameContainer.addEventListener("touchstart", () => {
     jumpSound.play();
   }
 });
+
+function createSmoke() {
+  const smoke = document.createElement("div");
+  smoke.className = "smoke";
+
+  // Đặt vị trí khói ngay dưới bóng
+  smoke.style.left = bird.offsetLeft + bird.offsetWidth / 2 - 12 + "px";
+  smoke.style.top = bird.offsetTop + bird.offsetHeight - 5 + "px";
+
+  gameContainer.appendChild(smoke);
+
+  // Tự xóa khói sau animation
+  setTimeout(() => smoke.remove(), 300);
+}
 
 

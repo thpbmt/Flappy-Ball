@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flappy Bird</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Flappy Ball</title>
+  <link rel="stylesheet" href="style2.css" />
 </head>
 
 <body>
   <!-- Màn hình bắt đầu -->
   <div id="start-screen">
-    <h1>Flappy Ball</h1>
+    <!-- <h1 style="padding: 15px;">Flappy Ball</h1> -->
+    <img src="Images/logo Flappy Ball.png" id="ingame-logo">
     <input type="text" id="player-name" placeholder="Nhập tên của bạn" />
-    <br><br>
-    <label for="difficulty">Chọn độ khó:</label>
+    <h2 for="difficulty" style="padding: 15px;">Chọn độ khó:</h2>
     <select id="difficulty">
       <option value="easy">Easy</option>
       <option value="normal" selected>Normal</option>
@@ -22,9 +22,7 @@
       <option value="nightmare">Nightmare</option>
       <option value="impossible">God</option>
     </select>
-    <br><br>
-    <br><br>
-    <label for="skin-select">Chọn skin:</label>
+    <h2 for="skin-select" style="padding: 15px;">Chọn skin:</h2>
     <select id="skin-select">
       <option value="1">Bóng đá</option>
       <option value="2">Bóng chuyền</option>
@@ -35,9 +33,9 @@
       <option value="7">Bóng chày</option>
     </select>
 
-    <button id="start-button">Bắt đầu chơi</button>
-<br><br>
-<button id="go-to-welcome-button">🏠 Về màn hình Welcome</button>
+    <button id="start-button" style="margin-top: 10px;">Bắt đầu chơi</button>
+    <br><br>
+    <button id="go-to-welcome-button" >🏠 Về màn hình Welcome</button>
   </div>
 
   <!-- Game -->
@@ -50,7 +48,7 @@
     <!-- Overlay chứa bảng xếp hạng -->
     <div id="leaderboard" class="leaderboard-overlay" style="display: none;">
       <div class="leaderboard-content">
-        <h2>Bảng xếp hạng</h2>
+        <h2 style="padding: 15px;">BẢNG XẾP HẠNG</h2>
         <table>
           <thead>
             <tr>
